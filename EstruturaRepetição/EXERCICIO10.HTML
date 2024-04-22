@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 10</title>
+</head>
+
+<body>
+    <p>Insira o primeiro valor do intervalo</p>
+    <input type="text" id="input_primeiro">
+    <p>Insira o segundo valor do intervalo</p>
+    <input type="text" id="input_segundo">
+    <button onclick="mostrarPares()">S2 PARES</button>
+    <div id="resultado"></div>
+</body>
+
+</html>
+
+<script>
+    function mostrarPares() {
+        const primeiro = Number(input_primeiro.value)
+        const segundo = Number(input_segundo.value)
+
+        for (let contador = primeiro; contador < segundo; contador++) {
+            if(contador%2==0){
+                resultado.innerHTML += `${contador}<br>`
+            }
+        }
+    }
+</script>

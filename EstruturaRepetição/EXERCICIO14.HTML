@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCÍCIO 14</title>
+</head>
+
+<body>
+    <p>Qual a sua idade?</p>
+    <input type="text" id="input_idade" onkeyup="contarIdade()">
+    <div id="resultado"></div>
+</body>
+
+</html>
+
+<script>
+    function contarIdade() {
+        resultado.innerHTML = ``
+        const idade = Number(input_idade.value)
+        for (let contador = 1; contador <= idade; contador++) {
+            if (contador >= 0 && contador <= 4) {
+                resultado.innerHTML += `${contador} anos - (Primeira Infância)<br>`
+            } else if (contador >= 4 && contador <= 6) {
+                resultado.innerHTML += `${contador} anos - (Pré Escolar)<br>`
+            } else if (contador >= 6 && contador <= 10) {
+                resultado.innerHTML += `${contador} anos - (Segunda Infância)<br>`
+            } else if (contador >= 10 && contador <= 18) {
+                resultado.innerHTML += `${contador} anos - (Adolescência)<br>`
+            } else if (contador >= 18 && contador <= 50) {
+                resultado.innerHTML += `${contador} anos - (Adulto)<br>`
+            } else if (contador >= 50 && contador <= 100) {
+                resultado.innerHTML += `${contador} anos - (Melhor Idade)<br>`
+            } else {
+                resultado.innerHTML += `${contador} anos - (Matusalém)<br>`
+            }
+        }
+        resultado.innerHTML += `Sua idade é de ${idade} anos`
+    }
+</script>

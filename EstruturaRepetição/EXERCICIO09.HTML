@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 09</title>
+</head>
+<body>
+    <p>Digite um número</p>
+    <input type="text" id="input_numero">
+    <p>Digite uma frase</p>
+    <input type="text" id="input_texto">
+    <button onclick="mostrarFrases()">Papagaio</button>
+    <div id="resultado"></div>
+</body>
+</html>
+<script>
+    function mostrarFrases(){
+        const numero = Number(input_numero.value)
+        const frase = input_texto.value
+
+        for(let contador=0; contador<numero;contador++){
+            resultado.innerHTML += `${frase}<br>`
+        }
+    }
+</script>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 21</title>
+</head>
+
+<body>
+    <p>Quantos depósitos você fez no banco?</p>
+    <input type="text" id="quantidade_depositos">
+    <p>Valor dos depósitos?</p>
+    <input type="text" id="valor_depositos">
+    <button onclick="acompanharGrana()">Acompanhar Grana</button>
+    <div id="resultado"></div>
+</body>
+
+</html>
+
+<script>
+    function acompanharGrana() {
+        let quantidadeDepositos = Number(quantidade_depositos.value)
+        let valor = Number(valor_depositos.value)
+        let totalGuardado = 0
+        let bonus = 0
+        let bonusAcumulado = 0
+
+        for (let contador = 1; contador <= quantidadeDepositos; contador++) {
+            if (contador % 3 == 0) {
+                bonus = valor * 0.01
+                bonusAcumulado += bonus
+                resultado.innerHTML += `${contador}° Mês: R$ ${(valor + bonusAcumulado) * contador}<img src="bonus.png" style="height:10px;"><br>`
+            }
+            else {
+                resultado.innerHTML += `${contador}° Mês: R$ ${valor * contador}<br>`
+            }
+            totalGuardado = (valor + bonusAcumulado) * contador
+        }
+        resultado.innerHTML += `Total guardado: R$ ${totalGuardado}`
+    }
+</script>

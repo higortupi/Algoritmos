@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 17</title>
+</head>
+
+<body>
+    <p>Quantas pessoas vão entrar no carro</p>
+    <input type="text" id="input_pessoas">
+    <p>Quantas pessoas seu carro suporta?</p>
+    <input type="text" id="input_quantidade">
+    <button onclick="contarPassageiros()">#PartiuCarona</button>
+    <div id="resultado"></div>
+</body>
+
+</html>
+
+<script>
+    function contarPassageiros() {
+        let pessoas = Number(input_pessoas.value)
+        let quantidade = Number(input_quantidade.value)
+        for (let contador = 1; contador <= pessoas; contador++) {
+            if (contador == 1) {
+                resultado.innerHTML += `Entrou o ${contador}° passageiro(que é o(a) motorista)<br>`
+            } else if (contador <= quantidade) {
+                resultado.innerHTML += `Entrou o ${contador}° passageiro<br>`
+            } else {
+                resultado.innerHTML += `O ${contador}° passageiro terá que esperar!<br>`
+            }
+        }
+    }
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 13</title>
+</head>
+
+<body>
+    <p>Quantos dias você faz musculação</p>
+    <input type="text" id="input_musculacao">
+    <button onclick="exibirRotina()">Exibir rotina mensal</button>
+    <div id="resultado"></div>
+</body>
+
+</html>
+
+<script>
+    function exibirRotina() {
+        let diasMusculacao = Number(input_musculacao.value)
+        for (let contador = 0; contador <= 30; contador++) {
+            if (contador % diasMusculacao == 0) {
+                resultado.innerHTML += `Dia ${contador} - Musculação<br>`
+            } else {
+                resultado.innerHTML += `Dia ${contador} - Comer,dormir e etc<br>`
+            }
+        }
+    }
+</script>

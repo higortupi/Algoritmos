@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 19</title>
+</head>
+
+<body>
+    <p>Quantas xicaras de café com leite você já tomou na vida?</p>
+    <input type="text" id="quantidade_xicaras">
+    <button onclick="verQuantidade()">Ver a quantidade</button>
+    <div id="resultado"></div>
+</body>
+
+</html>
+
+<script>
+    function verQuantidade() {
+        let quantidade = Number(quantidade_xicaras.value)
+        for (let contador = 0; contador <= quantidade; contador++) {
+            if (contador % 2 == 0) {
+                resultado.innerHTML += `<img src="cafe.jpg">`
+            } else {
+                resultado.innerHTML += `<img src="leite.png">`
+            }
+        }
+    }
+</script>

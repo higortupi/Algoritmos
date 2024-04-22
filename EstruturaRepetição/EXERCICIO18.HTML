@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 18</title>
+</head>
+
+<body>
+    <p>Quantas coca-colas você acha que bebeu na vida?</p>
+    <input type="text" id="quantidade_coca">
+    <button onclick="verQuantidade()">Ver a quantidade</button>
+    <div id="resultado"></div>
+</body>
+
+</html>
+
+<script>
+    function verQuantidade() {
+        let coca = Number(quantidade_coca.value)
+        resultado.innerHTML = ``
+        for (let contador = 1; contador <= coca; contador++) {
+            resultado.innerHTML += `<img src="cocacola.png">`
+        }
+    }
+</script>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 23</title>
+</head>
+
+<body>
+    <p>Qual o limite inferior da amostragem?</p>
+    <input type="text" id="input_inferior">
+    <p>Qual o limite superior da amostragem?</p>
+    <input type="text" id="input_superior">
+    <p>Qual a divisibilidade?</p>
+    <input type="text" id="input_divisor">
+    <button onclick="contar()">Contar</button>
+    <div id="resultado"></div>
+</body>
+
+</html>
+
+<script>
+    function contar() {
+
+        let inferior = Number(input_inferior.value)
+        let superior = Number(input_superior.value)
+        let divisibilidade = Number(input_divisor.value)
+        let exibidos = 0
+        let somatorio = 0
+        let media = 0
+        let primeiro = 0
+        let ultimo = 0
+
+        resultado.innerHTML = ``
+
+        if (inferior <= 0) {
+            alert(`O número deve ser maior que zero!`)
+        } else if (superior < inferior || superior > 100) {
+            alert(`O número superior deve ser maior que o inferior e menor que 100!`)
+        } else if (divisibilidade < 3 && divisibilidade > 10) {
+            alert(`O divisor deve ser maior que 3 e maior que 10!`)
+        }
+
+        for (contador = inferior; contador <= superior; contador++) {
+            if (contador % divisibilidade == 0) {
+                resultado.innerHTML += `${contador}, `
+                exibidos++
+                somatorio += contador
+                media = somatorio / exibidos
+                ultimo = contador
+                if (primeiro == 0) {
+                    primeiro = contador
+                }
+
+            }
+
+        }
+        resultado.innerHTML += `<br>Total de números exibidos: ${exibidos}`
+        resultado.innerHTML += `<br>Somatório dos números exibidos:${somatorio}`
+        resultado.innerHTML += `<br>Média dos números exibidos:${media}`
+        resultado.innerHTML += `<br>Menor número exibido:${primeiro}`
+        resultado.innerHTML += `<br>Maior número exibido:${ultimo}`
+    }
+</script>

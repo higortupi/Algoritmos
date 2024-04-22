@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCÍCIO 15</title>
+</head>
+
+<body>
+    <p>Quantidade de elefantes</p>
+    <input type="text" id="input_quantidade">
+    <button onclick="mostrarElefantes()">Atazanar a medium</button>
+    <div id="resultado"></div>
+</body>
+
+</html>
+
+<script>
+    function mostrarElefantes() {
+        let elefantes = Number(input_quantidade.value)
+        
+
+        for (let contador = 0; contador <= elefantes; contador++) {
+            resultado.innerHTML = `1 elefante incomoda muita gente`
+            if (elefantes > 1) {
+                resultado.innerHTML = `${elefantes}`
+            }
+        }
+    }
+</script>

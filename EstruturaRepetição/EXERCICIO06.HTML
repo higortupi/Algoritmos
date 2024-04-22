@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 06</title>
+</head>
+
+<body>
+    <p>QUAL A PESSOA QUE VOCÊ MAIS AMA NA VIDA?</p>
+    <input type="text" id="input_pessoa">
+    <p>O QUANTO VOCÊ AMA ELA?</p>
+    <input type="text" id="input_quantidade">
+    <button onclick="expressarAmor()">EXPRESSAR AMOR</button>
+    <div id="resultado"></div>
+</body>
+
+</html>
+
+<script>
+    function expressarAmor() {
+        const pessoa = input_pessoa.value
+        const amor = Number(input_quantidade.value)
+
+        for(let contador=1; contador<=amor;contador++){
+            resultado.innerHTML += `${contador} ${pessoa} - EU TE AMO! SEMPRE LEMBRE-SE DISSO!<BR>`
+        }
+    }
+</script>

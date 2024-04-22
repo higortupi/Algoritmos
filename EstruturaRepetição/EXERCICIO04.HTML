@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 04</title>
+</head>
+<body>
+    <button onclick="mostrarPares()">S2 PARES</button>
+    <div id="resultado"></div>
+</body>
+</html>
+
+<script>
+    function mostrarPares(){
+        for(let contador=0;contador<=100;contador+=2){
+            resultado.innerHTML += `${contador}<br>`
+        }
+    }
+</script>
