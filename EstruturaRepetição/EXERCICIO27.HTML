@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 26</title>
+</head>
+
+<body>
+    <p>Insira um número</p>
+    <input type="text" id="input_numero">
+    <p>Insira um divisor</p>
+    <input type="text" id="input_divisor">
+    <button onclick="somarNumeros()">Somar números</button>
+    <div id="resultado"></div>
+</body>
+
+</html>
+
+<script>
+    function somarNumeros() {
+        let numero = Number(input_numero.value)
+        let divisor = Number(input_divisor.value)
+        let somatoria = 0
+        resultado.innerHTML = ``
+        for (let contador = 1; contador <= numero; contador++) {
+            if (contador % divisor == 0) {
+                resultado.innerHTML += `Mútiplos: ${contador}<br>`
+                somatoria += contador
+            }
+        }
+        resultado.innerHTML += `Soma dos múltiplos : ${somatoria}<br>`
+    }
+</script>

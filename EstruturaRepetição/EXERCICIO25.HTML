@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EXERCICIO 24</title>
+    <title>EXERCICIO 25</title>
 </head>
 
 <body>
@@ -19,16 +19,23 @@
 <script>
     function mostrarDivisores() {
         let numero = Number(input_numero.value)
+        let divisores = 0
         if (numero <= 0 || numero >= 100) {
             alert(`O número deve estar maior que 0 e ser menor que 100`)
         }
         resultado.innerHTML = `Divisores do número: ${numero}<br>`
 
-        for (let contador = 0; contador <= numero; contador++) {
+        for (let contador = 1; contador <= numero; contador++) {
 
             if (numero % contador == 0) {
                 resultado.innerHTML += `${contador}<br>`
+                divisores++
             }
+
+            if (divisores==2) {
+                resultado.innerHTML += `O número ${contador} é um primo<br>`
+            }
+
         }
     }
 </script>
