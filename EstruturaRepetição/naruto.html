@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naruto</title>
+
+    <style>
+        img {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Insira a quantidade de chakra</p>
+    <input type="text" id="input_chakra">
+    <p>Insira a quantidade de clones desejada</p>
+    <input type="text" id="input_clone">
+    <p>Quantidade de clones por linha</p>
+    <input type="text" id="input_linha">
+    <button onclick="criarClones()">Criar Clones</button>
+    <div id="resultado"></div>
+</body>
+
+</html>
+
+<script>
+    function criarClones() {
+
+        resultado.innerHTML = ``
+
+        let chakra = Number(input_chakra.value)
+        const clones = Number(input_clone.value)
+        const chakraNecessario = 20 * clones
+        const linha = Number(input_linha.value)
+        let chakraFinal = 0
+        let porcentagemSobra = 0
+
+        if (chakra < 20 || chakra > 5000) {
+            resultado.innerHTML = `ERRO NA ENTRADA DE DADOS – Energia tem que ser entre 20 e 5.000. Quantidade de Clones tem que ser entre 0 e 250. Quantidade de Clones por linha tem que ser maior que 0`
+        } else if (clones < 0 || clones > 250) {
+            resultado.innerHTML = `ERRO NA ENTRADA DE DADOS – Energia tem que ser entre 20 e 5.000. Quantidade de Clones tem que ser entre 0 e 250. Quantidade de Clones por linha tem que ser maior que 0`
+        } else if (linha < 0) {
+            resultado.innerHTML = `ERRO NA ENTRADA DE DADOS – Energia tem que ser entre 20 e 5.000. Quantidade de Clones tem que ser entre 0 e 250. Quantidade de Clones por linha tem que ser maior que 0`
+        }
+
+        if (chakra < chakraNecessario) {
+            alert("Chakra insuficiente")
+        } else {
+            for (let contador = 0; contador < clones; contador++) {
+                if (contador % linha == 0) { resultado.innerHTML += `<br>` }
+                resultado.innerHTML += `<img src=naruto.png>`
+            }
+
+            chakraFinal = chakra - chakraNecessario
+
+            porcentagemSobra = chakraFinal / chakra * 100
+
+
+            resultado.innerHTML += `<br>ANÁLISE DA GERAÇÃO DE CLONES<br>
+
+Chakra Inicial: ${chakra}<br>
+
+Quantidade de Clones: ${clones}<br>
+
+Sobra de Chakra: ${chakraFinal}<br>`
+
+            if ((chakraFinal > 1000 || clones > 50) && porcentagemSobra >= 20) {
+                resultado.innerHTML += `<br>PROVAVELMENTE VOCÊ VAI GANHAR`
+            } else if ((chakraFinal > 500 || clones > 20 && clones < 50) && porcentagemSobra >= 10) {
+                resultado.innerHTML += `<br>A LUTA VAI SER MUITO BOA`
+            } else {
+                resultado.innerHTML += `<br>TORÇA PARA O ADVERSÁRIO SER FRAQUINHO`
+            }
+
+        }
+    }
+</script>
