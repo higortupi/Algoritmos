@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 4</title>
+</head>
+
+<body>
+    <p>Filmes que mais gosta</p>
+    <input type="text" id="input_filmes">
+    <button onclick="cadastrarFilme()">Cadastrar Filme</button>
+    <button onclick="verFilmesFavoritos()">Ver Favoritos</button>
+    <div id="resultado"></div>
+</body>
+
+</html>
+
+
+<script>
+    const listaDeFilmes = []
+    function cadastrarFilme() {
+        const filmes = input_filmes.value
+
+        if (filmes != "" && filmes.lenght >= 3) {
+            listaDeFilmes.push(filmes)
+        } else {
+            resultado.innerHTML = `Insira um filme váido`
+        }
+        
+    }
+    function verFilmesFavoritos() {
+        for (let posicao = 0; posicao < listaDeFilmes.length; posicao++) {
+            resultado.innerHTML += `${listaDeFilmes[posicao]}<BR>`
+        }
+        resultado.innerHTML += `Total de filmes ${listaDeFilmes.length}<br>`
+        resultado.innerHTML += `Desses o que mais gosta é ${listaDeFilmes[0]}<br>`
+        resultado.innerHTML += `E o que menos gosta é ${listaDeFilmes[listaDeFilmes.length - 1]}<br>`
+    }
+</script>

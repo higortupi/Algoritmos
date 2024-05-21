@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 8</title>
+</head>
+
+<body>
+    <p>Insira o nome de um aluno</p>
+    <input type="text" id="input_aluno">
+    <button onclick="cadastrarAluno()">Cadastrar Aluno</button>
+    <div id="resultado"></div>
+</body>
+
+</html>
+
+<script>
+    const listaDeAlunos = []
+    function cadastrarAluno() {
+        resultado.innerHTML = ``
+        const aluno = input_aluno.value
+
+        if (aluno != "" && aluno.length >= 3) {
+            listaDeAlunos.push(aluno)
+        } else {
+            alert("Entrada inválida!")
+        }
+
+        let posicaoInversa = listaDeProjetos.length - 1
+
+        for (let posicao = posicaoInversa; posicao >= 0; posicao--) {
+            resultado.innerHTML += `${listaDeAlunos[posicao]}<br>`
+        }
+    }
+</script>

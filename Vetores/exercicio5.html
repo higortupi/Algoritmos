@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 5</title>
+</head>
+
+<body>
+    <p>Filmes Favoritos</p>
+    <input type="text" id="input_filmes">
+    <button onclick="cadastrarFilme()">Cadastrar Filme</button>
+    <div id="resultado"></div>
+</body>
+
+</html>
+
+<script>
+    const listaDeFilmes = []
+    function cadastrarFilme() {
+        resultado.innerHTML = ""
+        const filmes = input_filmes.value
+
+        if (filmes != "" && filmes.length >= 3) {
+            listaDeFilmes.push(filmes)
+        } else {
+            resultado.innerHTML = `Entrada inválida!`
+        }
+
+        resultado.innerHTML += `Seu filme favorito : ${listaDeFilmes[0]}<br>`
+        if (listaDeFilmes.length <= 2) {
+            resultado.innerHTML += `Ainda não existe <BR>`
+        } else {
+            resultado.innerHTML += `Seu 3° filme favorito é : ${listaDeFilmes[2]}<BR>`
+        }
+        resultado.innerHTML += `Total de filmes cadastrados : ${listaDeFilmes.length}<BR>`
+    }
+
+</script>

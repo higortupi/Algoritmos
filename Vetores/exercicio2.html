@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 02</title>
+</head>
+
+<body>
+    <p>Destino da viagem</p>
+    <input type="text" id="input_destino">
+    <button onclick="adicionar_destino()">Adicionar</button>
+    <button onclick="primeiraViagem()">Primeira Viagem</button>
+    <button onclick="segundaViagem()">Segunda Viagem</button>
+    <button onclick="ultimaViagem()">Ultima Viagem</button>
+    <div id="resultado"></div>
+</body>
+
+</html>
+
+<script>
+    resultado.innerHTML = ``
+    const listaDeDestinos = []
+    function adicionar_destino() {
+        const destino = input_destino.value
+
+
+        if (destino == "") {
+            resultado.innerHTML = `Destino inválido!`
+        } else {
+            const adicionandoDestino = listaDeDestinos.push(destino)
+        }
+    }
+    function primeiraViagem() {
+        if (listaDeDestinos.length == -1) {
+            resultado.innerHTML = `Ainda não viajou`
+        } else {
+            resultado.innerHTML += `${listaDeDestinos[0]}`
+        }
+    }
+    function segundaViagem() {
+        if (listaDeDestinos.length <= 3) {
+            resultado.innerHTML += `Ainda não viajou!`
+        } else {
+            resultado.innerHTML += `${listaDeDestinos[3]}`
+        }
+    }
+    function ultimaViagem() {
+        if (listaDeDestinos.length > 0) {
+            resultado.innerHTML += `${listaDeDestinos[listaDeDestinos.length - 1]}`
+        } else {
+            resultado.innerHTML = `Ainda não viajou`
+        }
+
+    }
+</script>

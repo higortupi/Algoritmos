@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 7</title>
+</head>
+
+<body>
+    <p>Filmes que mais gosta</p>
+    <input type="text" id="input_filmes">
+    <button onclick="cadastrarFilme()">Cadastrar</button>
+    <div id="resultado"></div>
+</body>
+
+</html>
+<script>
+    const listaDeFilmes = []
+    function cadastrarFilme() {
+        resultado.innerHTML = ``
+        const filme = input_filmes.value
+
+        if (filme != "" && filme.length >= 3) {
+            listaDeFilmes.push(filme)
+        } else {
+            alert("Entrada Inválida!")
+        }
+
+        for (let posicao = 0; posicao < listaDeFilmes.length; posicao++) {
+            if (posicao % 2 == 0) {
+                resultado.innerHTML += `<span style = "color:blue">${listaDeFilmes[posicao]}</span> <br>`
+            } else {
+                resultado.innerHTML += `<span style = "color:red">${listaDeFilmes[posicao]}</span> <br>`
+            }
+        }
+    }
+</script>

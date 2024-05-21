@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 10</title>
+</head>
+
+<body>
+    <p>Qual linha de onibus você pega?</p>
+    <input type="text" id="linha_onibus">
+    <button onclick="gravarBusao()">Gravar Busão</button>
+
+    <p>Pesquise uma linha que você tenha pego</p>
+    <input type="text" id="input_pesquisa">
+
+    <button onclick="pesquisarLinha()">Pesquisar Linha</button>
+
+    <div id="resultado"></div>
+</body>
+
+</html>
+
+<script>
+    const listaDeLinhas = []
+    function gravarBusao() {
+        const nomeLinha = input_onibus.value
+        if (nomeLinha != "" && nomeLinha.length >= 3) {
+            listaDeLinhas.push(nomeLinha)
+        } else {
+            alert("Insira uma linha válida!")
+        }
+
+        let posicaoInversa = listaDeLinhas.length - 1
+        for (let posicao = posicaoInversa; posicao >= 0; posicao--) {
+            resultado.innerHTML += `Linha : ${listaDeLinhas[posicao]}<br>`
+        }
+    }
+
+    function pesquisarLinha() {
+        const linhaPesquisada = input_pesquisa.value
+
+        
+    }
+</script>

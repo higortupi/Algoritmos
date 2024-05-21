@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 03</title>
+</head>
+
+<body>
+    <p>Bairros onde já morou</p>
+    <input type="text" id="input_bairros">
+    <button onclick="cadastrarBairro()">Cadastrar Bairro</button>
+    <p>Qual bairro você deseja ver?(a partir do 1)</p>
+    <input type="text" id="numero_bairro">
+    <button onclick="relambrarMoradia()">Relembrar moradia</button>
+    <div id="resultado"></div>
+</body>
+
+</html>
+
+<script>
+    const listaDeBairros = []
+    function cadastrarBairro() {
+        const bairro = input_bairros.value
+
+        if (bairro == "" || bairro.length <= 3) {
+            resultado.innerHTML = `Insira um bairro válido`
+        } else {
+            listaDeBairros.push(bairro)
+        }
+    }
+
+    function relambrarMoradia() {
+        const numeroBairro = Number(numero_bairro.value)
+
+
+        if (numeroBairro < listaDeBairros.length) {
+            resultado.innerHTML += `A posição ${numeroBairro} refere-se ao bairro ${listaDeBairros[numeroBairro-1]}`
+        } else {
+            resultado.innerHTML = `Bairro não existente!`
+        }
+    }
+</script>

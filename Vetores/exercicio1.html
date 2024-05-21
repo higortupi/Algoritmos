@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 01</title>
+</head>
+
+<body>
+    <p>Digite uma fruta</p>
+    <input type="text" id="input_fruta">
+    <button onclick="pesquisar_fruta()">Pesquisar</button>
+    <div id="resultado"></div>
+</body>
+
+</html>
+
+<script>
+
+    const listaDeFrutas = ["Pera", "Uva", "Maçã", "Banana", "Mamão", "Melancia", "Jaca", "Abacate", "Caqui"]
+
+    function pesquisar_fruta() {
+        const frutaPesquisada = input_fruta.value
+        const listaDeFrutasMinuscula = listaDeFrutas.map(fruta => fruta.toLowerCase())
+
+        if (listaDeFrutasMinuscula.indexOf(frutaPesquisada) >= 0) {
+            resultado.innerHTML = `A fruta ${frutaPesquisada} existe na lista`
+        } else {
+            resultado.innerHTML = `Não existe a fruta ${frutaPesquisada} na lista`
+        }
+    }
+</script>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 9</title>
+</head>
+
+<body>
+    <p>Nome do projeto</p>
+    <input type="text" id="input_projeto">
+    <button onclick="registrarProjeto()">Registrar Projeto</button>
+    <button onclick="mostrarProjeto()">Mostrar Projetos</button>
+    <div id="resultado"></div>
+</body>
+
+</html>
+
+<script>
+    const listaDeProjetos = []
+    function registrarProjeto() {
+
+        resultado.innerHTML = ""
+
+        const junior = "Júnior"
+        const pleno = "Pleno"
+        const senior = "Sênior"
+
+        const projeto = input_projeto.value
+
+        if (projeto != "" && projeto.length >= 3) {
+            listaDeProjetos.push(projeto)
+        } else {
+            alert("Projeto Inválido!")
+        }
+        if (listaDeProjetos.length >= 0 && listaDeProjetos.length <= 4) {
+            resultado.innerHTML += `Você já fez ${listaDeProjetos.length} projetos você é um profissional ${junior}<br>`
+        } else if (listaDeProjetos.length >= 5 && listaDeProjetos.length <= 12) {
+            resultado.innerHTML += `Você já fez ${listaDeProjetos.length} projetos você é um profissional ${pleno}<br>`
+        } else {
+            resultado.innerHTML += `Você já fez ${listaDeProjetos.length} projetos você é um profissional ${senior}<br>`
+        }
+
+    }
+    function mostrarProjeto() {
+
+        let posicaoInversa = listaDeProjetos.length - 1
+
+        for (let posicao = posicaoInversa; posicao >= 0; posicao--) {
+            resultado.innerHTML += `<br>${listaDeProjetos[posicao]}<br>`
+            
+        }
+    }
+</script>
