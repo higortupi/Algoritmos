@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Destino de viagem:
+    <input id="input_destino_viagem"><br>
+    <button onclick="adicionarDestinoViagem()">
+        Adicionar
+    </button>
+    <button onclick="exibirPrimeiraViagem()">
+        Primeira viagem
+    </button>
+    <button onclick="exibirTerceiraViagem()">
+        Terceira viagem
+    </button>
+    <button onclick="exibirUltimaViagem()">
+        Última viagem
+    </button>
+    <div id="div_viagem"></div>
+</body>
+</html>
+
+<script>
+    const listaDestinos = [];
+    function adicionarDestinoViagem() {
+        const novoDestinoViagem = input_destino_viagem.value;
+        if (novoDestinoViagem == "") {
+            alert("Destino inválido!")
+        } else {
+            listaDestinos.push(novoDestinoViagem);
+        }
+    }
+
+    function exibirPrimeiraViagem() {
+        if (listaDestinos.length == 0) {
+            div_viagem.innerHTML = "Você ainda não fez a primeira viagem";
+        } else {
+            div_viagem.innerHTML = `A primeira viagem foi para: ${listaDestinos[0]}`
+        }
+    }
+
+    function exibirTerceiraViagem() {
+        if (listaDestinos.length >= 3) {
+            div_viagem.innerHTML = `Sua terceira viagem foi para: ${listaDestinos[2]}`
+        } else {
+            div_viagem.innerHTML = "Você ainda não fez uma terceira viagem!";
+        }
+    }
+
+    function exibirUltimaViagem() {
+        if (listaDestinos.length > 0) {
+            const posicaoUltimaViagem = listaDestinos.length - 1;
+            const ultimaViagem = listaDestinos[posicaoUltimaViagem];    
+            div_viagem.innerHTML = `Sua última viagem foi para: ${ultimaViagem}`;
+        } else {
+            div_viagem.innerHTML = "Você não realizou nenhuma viagem !";
+        }
+    }
+
+</script>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Informe o nome do filme:
+    <input id="input_nome_filme" /><br />
+    <button onclick="cadastrarFilme()">Cadastrar Filme</button><br />
+    <button onclick="verFilmesFavoritos()">Ver favoritos</button>
+    <div id="div_resultado_filmes"></div>
+  </body>
+</html>
+
+<script>
+  "use strict";
+
+  const listaFilmes = [];
+  function cadastrarFilme() {
+    div_resultado_filmes.innerHTML = "";
+    const novoFilme = input_nome_filme.value;
+    const novoFilmeNormalizado = novoFilme.trim().toLowerCase();
+
+    // Nome do filme tem que ter ao menos 5 letras;
+    // Nome do filme tem que estar preenchido;
+    // Nome do filme não pode ser repetido;
+
+    const nomeFilmeTemTamanhoCorreto = novoFilmeNormalizado.length >= 5;
+    const nomeFilmeEstaPreenchido = novoFilmeNormalizado != "";
+
+    if (!nomeFilmeTemTamanhoCorreto || !nomeFilmeEstaPreenchido) {
+      alert("Entrada inválida");
+    } else {
+      let nomeFilmeRepetido = false;
+      for (let posicao = 0; posicao < listaFilmes.length; posicao += 1) {
+        const filme = listaFilmes[posicao];
+        if (filme == novoFilme) {
+          nomeFilmeRepetido = true;
+        }
+      }
+
+      if (!nomeFilmeRepetido) {
+        listaFilmes.push(novoFilme);
+        exibirFilmesDaLista();
+      } else {
+        alert(`Filme ${novoFilme} já está na lista!`);
+      }
+    }
+  }
+
+  function exibirFilmesDaLista() {
+    for (
+        let posicao = 0; 
+        posicao < listaFilmes.length;
+        posicao += 1) {
+      const filme = listaFilmes[posicao];
+      let cor = "red";
+      if (posicao % 2 != 0) {
+        cor = "blue";
+      }
+      div_resultado_filmes.innerHTML += `<span style="color: ${cor}"> ${posicao + 1} ${filme} </span> <br>`;
+    }
+  }
+
+  function verFilmesFavoritos() {
+    exibirFilmesDaLista();
+
+    const filmeFavorito = listaFilmes[0];
+    const totalFilmesCadastrados = listaFilmes.length;
+    const ultimaPosicao = totalFilmesCadastrados - 1;
+    const filmeMenosFavorito = listaFilmes[ultimaPosicao];
+    div_resultado_filmes.innerHTML += `
+            <br>Total de filmes: ${totalFilmesCadastrados}
+            <br>
+            Desses, o que mais gosta é <b>${filmeFavorito}</b><br>
+            E, o que menos gosta é <b>${filmeMenosFavorito}</b>
+        `;
+  }
+</script>

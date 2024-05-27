@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 17</title>
+</head>
+
+<body>
+    <div id="div_registrar" style="display: block;">
+        <h1>Análise de performance de alunos - registro</h1>
+        <p>Entre com o nome do aluno</p>
+        <input type="text" id="input_nome_aluno">
+        <p>Entre com a nota do aluno</p>
+        <input type="text" id="input_nota_aluno">
+        <button onclick="registrarAluno()">Registrar</button>
+        <button onclick="mostrarDiv()">Analisar</button>
+        <div id="resultado"></div>
+    </div>
+
+    <div id="div_pesquisa" style="display: none;">
+        <h1>Análise de performance de alunos - pesquisa</h1>
+        <p>Entre com o intervalo de notas</p>
+        <input type="text" id="input_intervalo_inicio" placeholder="De">
+        <input type="text" id="input_intervalo_fim" placeholder="Até">
+        <button onclick="analisarAluno()">Pesquisar</button>
+        <button onclick="voltarDiv()">Voltar</button>
+        <div id="resultadoPesquisa"></div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    const listaAlunos = []
+    const listaNotasAlunos = []
+
+    function registrarAluno() {
+        const aluno = input_nome_aluno.value
+        const nota = Number(input_nota_aluno.value)
+
+        if (aluno != "" && nota != isNaN && nota >= 0 && nota <= 10) {
+            listaAlunos.push(aluno)
+            listaNotasAlunos.push(nota)
+            resultado.innerHTML = `Aluno cadastrado com sucesso!<br><br>`
+        } else {
+            resultado.innerHTML = `Insira uma nota e um aluno válido!<br>`
+        }
+
+        for (let posicao = listaAlunos.length - 1; posicao >= 0; posicao--) {
+            resultado.innerHTML += `Aluno : ${listaAlunos[posicao]}<br>`
+            resultado.innerHTML += `Nota : ${listaNotasAlunos[posicao]}<br>`
+        }
+    }
+
+    function mostrarDiv() {
+        div_pesquisa.style.display = 'block'
+        div_registrar.style.display = 'none'
+    }
+    function voltarDiv() {
+        div_pesquisa.style.display = 'none'
+        div_registrar.style.display = 'block'
+    }
+
+    function analisarAluno() {
+        const intervaloInicio = Number(input_intervalo_inicio.value)
+        const intervaloFim = Number(input_intervalo_fim.value)
+
+        if (intervaloInicio < 0 && intervaloFim > 10) {
+            resultadoPesquisa.innerHTML = "Insira um intervalo válido!"
+        }
+
+        let maiorNotaAlunos = listaNotasAlunos[0]
+
+        let menorNotaAlunos = listaNotasAlunos[0]
+
+        let somaFinal = 0
+
+        let alunosNoIntervalo = 0;
+
+        let nomeAlunoNoIntervalo = []
+
+
+
+        for (let posicao = 0; posicao < listaNotasAlunos.length; posicao++) {
+
+            if (listaNotasAlunos[posicao] >= intervaloInicio && listaNotasAlunos[posicao] <= intervaloFim) {
+                alunosNoIntervalo++
+                // nomeAlunoNoIntervalo.push(listaAlunos[posicao])
+                resultadoPesquisa.innerHTML += `O Aluno ${listaAlunos[posicao]}, ficou com a nota ${listaNotasAlunos[posicao]}<br><BR>`
+            }
+
+
+            if (listaNotasAlunos[posicao] > maiorNotaAlunos) {
+                maiorNotaAlunos = listaNotasAlunos[posicao];
+            }
+
+            if (listaNotasAlunos[posicao] < menorNotaAlunos) {
+                menorNotaAlunos = listaNotasAlunos[posicao];
+            }
+
+            somaFinal += listaNotasAlunos[posicao]
+        }
+
+        const mediaNotas = somaFinal / listaAlunos.length
+
+        resultadoPesquisa.innerHTML += `Total de alunos registrados ${listaAlunos.length}<br>`
+        resultadoPesquisa.innerHTML += `Total de alunos listados no intervalo: ${alunosNoIntervalo}<br>`
+        resultadoPesquisa.innerHTML += `Maior nota: ${maiorNotaAlunos}<br>`
+        resultadoPesquisa.innerHTML += `Menor nota: ${menorNotaAlunos}<br>`
+        resultadoPesquisa.innerHTML += `Media : ${mediaNotas.toFixed(2)}<br>`
+
+    }
+</script>

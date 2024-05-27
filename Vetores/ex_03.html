@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Informe o nome do bairro em que morou:
+    <input id="input_bairro"><br>
+    <button onclick="cadastrarBairro()">
+        Cadastrar
+    </button><br>
+    Pesquise o bairro pela ordem (a partir do 1):
+    <input type="number" 
+           min="1"
+           id="input_pesquisa_bairro"><br>
+    <button onclick="relembrarMoradia()">
+        Relembrar moradia
+    </button>
+    <div id="div_bairro_encontrado"></div>
+</body>
+</html>
+
+<script>
+    const listaBairros = [];
+    function cadastrarBairro() {
+        const novoBairro = input_bairro.value;
+        const novoBairroSanitizado = novoBairro.trim();
+        
+        const bairroEstaPreenchido = novoBairroSanitizado != "";
+        const bairroTemTamanhoCorreto = novoBairroSanitizado.length >= 3;
+
+        if (bairroEstaPreenchido && bairroTemTamanhoCorreto) {
+            listaBairros.push(novoBairro);
+        } else {
+            alert("Nome do bairro inválido !");
+        }
+    }
+
+    function relembrarMoradia() {
+        const ordemBairroPesquisado = Number(input_pesquisa_bairro.value);
+
+        if (ordemBairroPesquisado <= 0) {
+            alert("Posição incorreta para o bairro ! Informe a partir de 1");
+        } else {
+            const tamanhoListaBairros = listaBairros.length;
+            const bairroEstaNaLista = ordemBairroPesquisado <= tamanhoListaBairros;
+    
+            if (bairroEstaNaLista) {
+                const posicaoBairro = ordemBairroPesquisado - 1;
+                const bairroEncontrado = listaBairros[posicaoBairro]; 
+    
+                div_bairro_encontrado.innerHTML = `A posição ${ordemBairroPesquisado} refere-se ao bairro ${bairroEncontrado}`
+            } else {
+                div_bairro_encontrado.innerHTML = `Você ainda não morou num ${ordemBairroPesquisado}º bairro!`
+            }
+        }
+
+    }
+</script>

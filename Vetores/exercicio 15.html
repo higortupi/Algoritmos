@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 15</title>
+</head>
+
+<body>
+    <p>Nome do produto</p>
+    <input type="text" id="input_produto">
+    <p>Preço de venda</p>
+    <input type="text" id="preco_venda">
+    <button onclick="cadastrarProdutoPreco()">Cadastrar</button>
+    <button onclick="gerarRelatorio()">Relatório de Estoque</button>
+    <div id="resultado"></div>
+</body>
+
+</html>
+
+<script>
+    const listaDeProdutos = []
+    const listaDePrecos = []
+    function cadastrarProdutoPreco() {
+        const produto = input_produto.value
+        const preco = Number(preco_venda.value)
+
+        if (produto != "" && preco != "") {
+            listaDeProdutos.push(produto)
+            listaDePrecos.push(preco)
+            resultado.innerHTML = `Produto Cadastrado!<br>`
+        } else {
+            resultado.innerHTML = `Insira um produto válido e um preço válido!`
+        }
+    }
+    function gerarRelatorio() {
+        limparDiv()
+        resultado.innerHTML += `Total de produtos: ${listaDeProdutos.length} <br>`
+
+
+
+
+        let maisCaroPreco = listaDePrecos[0]
+
+        let maisBaratoPreco = listaDePrecos[0]
+
+        let maisCaroProduto = listaDeProdutos[0]
+
+        let maisBaratoProduto = listaDeProdutos[0]
+
+        let somaPrecoCompras = 0
+
+        for (let posicao = 0; posicao < listaDeProdutos.length; posicao++) {
+            resultado.innerHTML += `Produto ${posicao + 1}: ${listaDeProdutos[posicao]} <br>`
+            resultado.innerHTML += `Preço de compra: R$ ${listaDePrecos[posicao]}. Vender por R$: ${listaDePrecos[posicao] * 1.25} <br>`
+
+
+            if (listaDePrecos[posicao] > maisCaroPreco) {
+                maisCaroPreco = listaDePrecos[posicao];
+                maisCaroProduto = listaDeProdutos[posicao]
+            }
+
+            if (listaDePrecos[posicao] < maisBaratoPreco) {
+                maisBaratoPreco = listaDePrecos[posicao];
+                maisBaratoProduto = listaDeProdutos[posicao]
+            }
+
+            somaPrecoCompras += listaDePrecos[posicao]
+
+
+        }
+
+        const mediaPrecoVendas = (somaPrecoCompras * 1.25) / listaDeProdutos.length
+
+        resultado.innerHTML += `<br>Produto mais caro ${maisCaroProduto}. R$: ${maisCaroPreco} <br>`
+        resultado.innerHTML += `Produto mais barato ${maisBaratoProduto}. R$: ${maisBaratoPreco} <br>`
+
+        resultado.innerHTML += `Soma dos preços de compra dos produtos : ${somaPrecoCompras}<br>`
+        resultado.innerHTML += `Media dos preços de venda dos produtos : ${mediaPrecoVendas}`
+
+    }
+
+    function limparDiv() {
+        resultado.innerHTML = ``
+    }
+</script>

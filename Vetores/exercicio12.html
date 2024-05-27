@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 12</title>
+</head>
+
+<body>
+    <p>Qual o nome do seu filho?</p>
+    <input type="text" id="input_nome">
+    <button onclick="cadastrarFilho()">Cadastrar</button>
+    <button onclick="atualizarFamilia()">Atualizar família</button>
+    <div id="resultado"></div>
+</body>
+
+</html>
+
+<script>
+    const listaDeFilhos = []
+    function cadastrarFilho() {
+        const filho = input_nome.value
+
+        if (filho == "" && filho.length < 3) {
+            alert("Entrada inválida!")
+        } else {
+            let filhoJaExiste = false
+            for (let posicao = 0; posicao < listaDeFilhos.length; posicao++) {
+                const filhoPosicao = listaDeFilhos[posicao]
+                if (filhoPosicao == filho)
+                    filhoJaExiste = true
+            }
+
+            if (!filhoJaExiste) {
+                listaDeFilhos.push(filho)
+                resultado.innerHTML = "Filho cadastrado com sucesso!"
+            } else {
+                alert("Não pode mais de 1 filho com o mesmo nome!")
+            }
+
+        }
+    }
+
+    function atualizarFamilia() {
+        limparDiv()
+        let particular = listaDeFilhos.length * 3000
+        let publica = listaDeFilhos.length * 1500
+        resultado.innerHTML += `Você tem ${listaDeFilhos.length} filhos<br>`
+        resultado.innerHTML += `Seu custo mensal será aproximadamente R$ ${particular} se colocá-los em escola particular ou R$ ${publica} se eles estudarem em escola pública<br>`
+
+    }
+
+    function limparDiv() {
+        resultado.innerHTML = ""
+    }
+</script>
